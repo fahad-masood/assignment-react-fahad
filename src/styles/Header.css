@@ -1,0 +1,57 @@
+.header{
+    display: flex;
+    width: 90%;
+}
+
+.headingTop{
+    padding-top: 10px;
+    width: 90%;
+}
+
+.notification{
+    width: 20px;
+    margin-right: 25px;
+}
+
+.dot{
+    position: relative;
+    bottom: 7px;
+    right: 30px;
+}
+
+.dropdown{
+    width: 13px;
+    height: 10px;
+    margin-left: 6px;
+    margin-top: 5px;
+}
+
+.flexHeader{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: -70px;
+}
+
+@media all and (max-width: 1290px) {
+    .logoImg{
+        width: 100px;
+    }
+
+    .headingTop{
+        font-size: 15px;
+    }
+
+    .notification{
+        width: 15px;
+    }
+
+    .dropdown{
+        width: 10px;
+        height: 8px;
+        margin-left: 4px;
+    }
+    .flexHeader{
+        margin-top: -20px;
+    }
+}

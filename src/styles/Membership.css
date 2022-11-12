@@ -1,0 +1,122 @@
+.kycOff > h3,
+.kycOff > p{
+    color: rgba(139, 140, 145, 0.88);
+}
+
+.membershipOn > p{
+    background: linear-gradient(90deg, #ECE9E6 0%, #FFFFFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.basicText{
+    width: 70%;
+    font-weight: 300;
+    font-size: 26.48px;
+    line-height: 40px;
+    margin-top: 0;
+    margin-bottom: 70px;
+}
+
+.flexBtnRow{
+    display: flex;
+    width: 60%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom : 88px;
+}
+
+.darkBtn,
+.darkBtnOff{
+    box-sizing: border-box;
+    width: 233px;
+    height: 51px;
+    border-radius: 15px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21.48px;
+    line-height: 32px;
+}
+
+.darkBtn{
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 100%);
+    border: 1px solid #FFFFFF;
+    cursor: pointer;
+}
+
+.darkBtnOff{
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 100%);
+    color: #8B8C91;
+    border: 1px solid #8B8C91;
+    cursor: not-allowed;
+}
+
+.infoBasic{
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 520px;
+    height: 110px;
+    background: linear-gradient(269.74deg, rgba(255, 255, 255, 0.21) -254.09%, rgba(255, 255, 255, 0) 99.84%);
+    border: 1px solid #FFFFFF;
+    border-radius: 16.3366px;
+    padding: 15px;
+    width: 60%;
+    margin-bottom: 84px;
+}
+
+.spanText{
+    font-weight: 500;
+    font-size: 26.48px;
+    line-height: 40px;
+    text-align: center;
+}
+
+@media all and (max-width: 1290px) {
+    .basicText{
+        width: 90%;
+        margin-bottom: 40px;
+    }
+
+    .heading{
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    .icon-small{
+        padding-left: 4px;
+    }
+    
+    .kycOff > p,
+    .membershipOn > p{
+        width: 50%;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .flexBtnRow{
+        width: 90%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .darkBtn,
+    .darkBtnOff{
+        width: 300px;
+        height: 50px;
+        margin-bottom: 6px;
+        font-size: 16px;
+    }
+
+    .darkBtn{
+        margin-right: 10px;
+    }
+
+    .spanText{
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+    }
+}
