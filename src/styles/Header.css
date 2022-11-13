@@ -33,6 +33,16 @@
     margin-top: -70px;
 }
 
+.headerBottom{
+    display: flex;
+    margin: 0 auto;
+    height: 2px;
+    border-bottom: 2px solid #FFFFFF;
+    width: 80%;
+    margin-bottom: 103px;
+    margin-top: -35px;
+}
+
 @media all and (max-width: 1290px) {
     .logoImg{
         width: 100px;
@@ -53,5 +63,10 @@
     }
     .flexHeader{
         margin-top: -20px;
+    }
+
+    .headerBottom{
+        margin-top: 0px;
+
     }
 }

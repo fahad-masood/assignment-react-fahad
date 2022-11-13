@@ -104,7 +104,9 @@ const Kyc = ({ toggle, setToggle, data }) => {
               <div
                 className="imgContainer"
                 style={{
-                  background: getStyle(item.kycCode, docList) ? "#173518" : "",
+                  background: getStyle(item.kycCode, docList)
+                    ? "linear-gradient(90deg, #F9D423 0%, #E65C00 100%)"
+                    : "",
                 }}
               >
                 <img
@@ -118,7 +120,9 @@ const Kyc = ({ toggle, setToggle, data }) => {
               </div>
               <button
                 style={{
-                  background: getStyle(item.kycCode, docList) ? "#173518" : "",
+                  background: getStyle(item.kycCode, docList)
+                    ? "linear-gradient(90deg, #F9D423 0%, #E65C00 100%)"
+                    : "",
                 }}
                 key={item.kycCode}
                 onClick={handleClick}
@@ -129,6 +133,7 @@ const Kyc = ({ toggle, setToggle, data }) => {
                   onChange={onFileChange}
                   key={item.kycCode}
                   type="file"
+                  accept=".jpg, .jpeg, .png"
                   style={{ display: "none" }}
                 />
                 Choose File

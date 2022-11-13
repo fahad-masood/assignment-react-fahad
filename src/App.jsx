@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Kyc from "./components/Kyc";
 import Membership from "./components/Membership";
 import { useState } from "react";
+import { useMediaPredicate } from "react-media-hook";
 
 function App() {
   const [toggle, setToggle] = useState(true);
@@ -50,11 +51,24 @@ function App() {
     },
   ];
 
+  const biggerThan1290 = useMediaPredicate("(min-width: 1290px)");
+
   return (
     <div className="App">
       <Header />
       <div className="flex">
         <Sidebar />
+        {biggerThan1290 && (
+          <hr
+            style={{
+              height: "245px",
+              width: "1px",
+              position: "relative",
+              marginLeft: "20px",
+              marginTop: "120px",
+            }}
+          />
+        )}
         {toggle ? (
           <Kyc data={data} toggle={toggle} setToggle={setToggle} />
         ) : (

@@ -111,7 +111,7 @@
 
 .chooseBtn{
     box-sizing: border-box;
-    width: 102px;
+    width: 110px;
     height: 24px;
     background: linear-gradient(270deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 100%);
     border: 1px solid #FFFFFF;
@@ -122,6 +122,13 @@
     line-height: 16px;
     color: #FFFFFF;
     cursor: pointer;
+}
+
+.chooseBtn:hover,
+.chooseBtn:focus{
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 100%);
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
 }
 
 .submitBtn{
@@ -138,6 +145,13 @@
     align-self: center;
     margin-bottom: 125px;
     cursor: pointer;
+}
+
+.submitBtn:hover,
+.submitBtn:focus{
+    background: linear-gradient(180deg, #F9D423 0%, #E65C00 100%);
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
 }
 
 @media all and (max-width: 1290px) {
