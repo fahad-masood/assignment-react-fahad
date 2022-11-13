@@ -1,12 +1,70 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Kyc.css";
 
-const Kyc = ({ toggle, setToggle }) => {
+const Kyc = ({ toggle, setToggle, data }) => {
+  const [docList, setDocList] = useState({});
+
   const handleToggle = () => {
-    console.log(toggle);
-    setToggle(false);
-    console.log(toggle);
+    // eslint-disable-next-line no-lone-blocks
+    {
+      docList.ADHRF.selected ||
+      docList.ADHRB.selected ||
+      docList.PSPT.selected ||
+      docList.VOTRF.selected ||
+      docList.VOTRB.selected ||
+      docList.PANC.selected ||
+      docList.BANK.selected ||
+      docList.MCPF.selected ||
+      docList.PPF2.selected ||
+      docList.PPF3.selected
+        ? setToggle(false)
+        : alert("Please upload atleast one document");
+    }
   };
+
+  useEffect(() => {
+    let docList = {};
+    data.forEach((item) => {
+      docList[item.kycCode] = {
+        file: [],
+        ext: "",
+        selected: false,
+      };
+    });
+    setDocList(docList);
+  }, [data]);
+
+  const handleClick = (e) => {
+    let itemArr = Array.from(e.target.children);
+    if (Array.isArray(itemArr) && itemArr.length) {
+      itemArr[0].click();
+    }
+  };
+
+  const onFileChange = (e) => {
+    const { name, files } = e.target;
+    if (files.length) {
+      setDocList({
+        ...docList,
+        [name]: {
+          file: files[0],
+          selected: true,
+        },
+      });
+    }
+  };
+
+  const getStyle = (key, list) => {
+    if (list[key]) {
+      let bg = list[key].selected ? true : false;
+      return bg;
+    }
+    return false;
+  };
+
+  // Check for the documents list after every upload:
+  console.log("Documents List: ", docList);
+
   return (
     <div className="mainContainer">
       <div className="flexRow">
@@ -40,127 +98,44 @@ const Kyc = ({ toggle, setToggle }) => {
         .png extension image file !!
       </p>
       <div className="kycDetails">
-        <div className="flexColumn">
-          <div className="imgContainer">
-            <img
-              className="imgPlaceholder"
-              src={require("../images/imageOutline.png")}
-              alt="scdc"
-            />
-            <p className="imgDesc">Your passport photo (White background)</p>
-          </div>
-          <button className="chooseBtn">Choose File</button>
-        </div>
-
-        <div className="flexColumn">
-          <div className="imgContainer">
-            <img
-              className="imgPlaceholder"
-              src={require("../images/imageOutline.png")}
-              alt="scdc"
-            />
-            <p className="imgDesc">Address Proof Aadhar Front Scan Copy</p>
-          </div>
-          <button className="chooseBtn">Choose File</button>
-        </div>
-
-        <div className="flexColumn">
-          <div className="imgContainer">
-            <img
-              className="imgPlaceholder"
-              src={require("../images/imageOutline.png")}
-              alt="scdc"
-            />
-            <p className="imgDesc">Aadhar Back Scan Copy</p>
-          </div>
-          <button className="chooseBtn">Choose File</button>
-        </div>
-
-        <div className="flexColumn">
-          <div className="imgContainer">
-            <img
-              className="imgPlaceholder"
-              src={require("../images/imageOutline.png")}
-              alt="scdc"
-            />
-            <p className="imgDesc">
-              Additional Address Proof Voter ID Front Copy
-            </p>
-          </div>
-          <button className="chooseBtn">Choose File</button>
-        </div>
-
-        <div className="flexColumn">
-          <div className="imgContainer">
-            <img
-              className="imgPlaceholder"
-              src={require("../images/imageOutline.png")}
-              alt="scdc"
-            />
-            <p className="imgDesc">PAN Card</p>
-          </div>
-          <button className="chooseBtn">Choose File</button>
-        </div>
-
-        <div className="flexColumn">
-          <div className="imgContainer">
-            <img
-              className="imgPlaceholder"
-              src={require("../images/imageOutline.png")}
-              alt="scdc"
-            />
-            <p className="imgDesc">Voter ID Back Copy</p>
-          </div>
-          <button className="chooseBtn">Choose File</button>
-        </div>
-
-        <div className="flexColumn">
-          <div className="imgContainer">
-            <img
-              className="imgPlaceholder"
-              src={require("../images/imageOutline.png")}
-              alt="scdc"
-            />
-            <p className="imgDesc">Bank Statement or Passbook with address</p>
-          </div>
-          <button className="chooseBtn">Choose File</button>
-        </div>
-
-        <div className="flexColumn">
-          <div className="imgContainer">
-            <img
-              className="imgPlaceholder"
-              src={require("../images/imageOutline.png")}
-              alt="scdc"
-            />
-            <p className="imgDesc">Mother Company Payment Proof</p>
-          </div>
-          <button className="chooseBtn">Choose File</button>
-        </div>
-
-        <div className="flexColumn">
-          <div className="imgContainer">
-            <img
-              className="imgPlaceholder"
-              src={require("../images/imageOutline.png")}
-              alt="scdc"
-            />
-            <p className="imgDesc">Payment Proof 2</p>
-          </div>
-          <button className="chooseBtn">Choose File</button>
-        </div>
-
-        <div className="flexColumn">
-          <div className="imgContainer">
-            <img
-              className="imgPlaceholder"
-              src={require("../images/imageOutline.png")}
-              alt="scdc"
-            />
-            <p className="imgDesc">Payment Proof 3</p>
-          </div>
-          <button className="chooseBtn">Choose File</button>
-        </div>
+        {data.map((item) => {
+          return (
+            <div className="flexColumn">
+              <div
+                className="imgContainer"
+                style={{
+                  background: getStyle(item.kycCode, docList) ? "#173518" : "",
+                }}
+              >
+                <img
+                  className="imgPlaceholder"
+                  src={require("../images/imageOutline.png")}
+                  alt="scdc"
+                />
+                <p key={item.kycCode} className="imgDesc">
+                  {item.name}
+                </p>
+              </div>
+              <button
+                style={{
+                  background: getStyle(item.kycCode, docList) ? "#173518" : "",
+                }}
+                key={item.kycCode}
+                onClick={handleClick}
+                className="chooseBtn"
+              >
+                <input
+                  name={item.kycCode}
+                  onChange={onFileChange}
+                  key={item.kycCode}
+                  type="file"
+                  style={{ display: "none" }}
+                />
+                Choose File
+              </button>
+            </div>
+          );
+        })}
       </div>
       <button onClick={handleToggle} className="submitBtn">
         Submit
